@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Category from './components/Category/Category';
+import Home from './components/Home/Home';
+import React, { createContext, useState } from 'react';
+
+export const categoryContext = createContext();
+
+
+
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <categoryContext.Provider value={[count, setCount]}>
+      <p>App js: {count}</p>
+      <Home></Home>
+      <Category></Category>
+    </categoryContext.Provider>
   );
 }
 
